@@ -36,6 +36,33 @@
     --cor-neutra-texto-claro: #fff;
     /* Branco Puro */
 
+    /* Cores Neutras (Tema Escuro - Base) */
+    --cor-neutra-fundo-escuro: rgba(60, 40, 20, 0.80);
+    /* Marrom Escuro (Fundo Main) */
+    --cor-neutra-texto: #e9fbe2;
+    /* Verde Claríssimo (Texto Principal Escuro) */
+
+    /* Cores Neutras (Tema Claro - Base) */
+    --cor-neutra-fundo-claro: #f5f0e8;
+    /* Bege/Off-white (Fundo Claro) */
+    --cor-neutra-texto-escuro: #3a2a16;
+    /* Marrom Escuro (Texto em Fundo Claro) */
+    --cor-neutra-texto-claro: #fff;
+    /* Branco Puro */
+
+    /* Cores de Blocos (Comuns) */
+    --cor-neutra-fundo-header: rgba(60, 40, 20, 0.90);
+    /* Marrom Escuro para Header */
+    --cor-neutra-fundo-footer: rgba(61, 122, 53, 0.85);
+    /* Fundo do Rodapé */
+
+    /* NOVA SEÇÃO: VARIÁVEIS DE COMPONENTES (SWITCH) 
+       Usando suas cores neutras existentes como base: */
+    --componente-switch-fundo-claro: var(--cor-neutra-fundo-claro);
+    /* Usando seu bege (#f5f0e8) */
+    --componente-switch-borda-clara: var(--cor-primaria-clara);
+    /* Usando seu verde pastel (#8bbd7e) para dar um toque da marca */
+
     /* TIPOGRAFIA */
     --fonte-size-xs: 0.9rem;
     --fonte-size-sm: 1.2rem;
@@ -47,17 +74,11 @@
        2. ESPAÇAMENTO MODULAR (8px, 16px, 24px, 32px, 48px, 64px)
        ================================================================= */
     --espacamento-xs: 8px;
-    /* Extra Small */
     --espacamento-sm: 16px;
-    /* Small (2 * 8px) */
     --espacamento-md: 24px;
-    /* Medium (3 * 8px) */
     --espacamento-lg: 32px;
-    /* Large (4 * 8px) */
     --espacamento-xl: 48px;
-    /* Extra Large (6 * 8px) */
     --espacamento-xxl: 64px;
-    /* Huge (8 * 8px) */
 }
 
 * {
@@ -176,8 +197,6 @@ nav ul li a:hover {
     transform: rotate(-45deg) translate(5px, -5px);
 }
 
-
-
 /* === CONTEÚDO PRINCIPAL === */
 main {
     background-color: var(--cor-neutra-fundo-escuro);
@@ -189,7 +208,6 @@ main {
     max-width: 1000px;
     margin: var(--espacamento-xl) auto;
     /* 48px auto */
-
 }
 
 main img {
@@ -203,6 +221,20 @@ main img {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
+/* NOVO: Espaçamento entre blocos de texto */
+main p,
+main address {
+    margin-bottom: var(--espacamento-sm);
+    /* 16px entre blocos de texto */
+}
+
+/* NOVO: Garante que o último parágrafo de uma seção não adicione margem excessiva */
+section p:last-child,
+section address:last-child {
+    margin-bottom: 0;
+}
+
+
 section {
     margin-bottom: var(--espacamento-xl);
     /*48*/
@@ -213,7 +245,7 @@ h2 {
     border-left: 5px solid var(--cor-primaria-clara);
     padding-left: var(--espacamento-sm);
     /* 16px */
-    margin-bottom: var(--espacamento-xs);
+    margin-bottom: var(--espacamento-md);
 }
 
 
@@ -428,7 +460,6 @@ footer {
     margin: 0 0 var(--espacamento-xs);
     /* Espaço entre imagem e legenda */
     box-shadow: none;
-
 }
 
 /* 4. Estilo da Legenda */
@@ -471,8 +502,6 @@ footer {
         /* Ocupa a largura total em telas pequenas */
     }
 }
-
-/*---------------------------------------------------*/
 
 /* === NOVO SUBMENU: CLIQUE NOS CARDS === */
 
@@ -547,8 +576,6 @@ footer {
     color: var(--cor-neutra-texto-escuro);
 }
 
-
-
 /* === LAYOUT FLEX — 2 COLUNAS NO DESKTOP, 1 NO MOBILE === */
 .linha-projetos {
     display: flex;
@@ -563,6 +590,74 @@ footer {
     max-width: 450px;
     margin: 0 auto;
 }
+
+/* --- Lógica de Boas-Vindas --- */
+.aviso-boas-vindas {
+    background-color: #e6ffe6;
+    /* Verde claro */
+    border: 1px solid #4CAF50;
+    padding: 15px;
+    margin: 20px 0;
+    border-radius: 8px;
+    text-align: center;
+}
+
+/* --- Lógica de Tema Claro (Inicial) --- */
+.tema-toggle {
+    position: absolute;
+    /* Ajuste a posição conforme seu layout de header */
+    top: 20px;
+    left: 8px;
+    display: flex;
+    align-items: center;
+}
+
+/* 🌞 TEMA CLARO (classe única usada no body) */
+body.light-mode {
+    background-color: var(--cor-neutra-fundo-claro);
+    color: var(--cor-neutra-texto-escuro);
+    text-shadow: none;
+}
+
+/* Ajusta blocos principais */
+body.light-mode header,
+body.light-mode main,
+body.light-mode footer,
+body.light-mode section {
+    background-color: var(--cor-neutra-fundo-claro);
+    color: var(--cor-neutra-texto-escuro);
+}
+
+/* Títulos ficam com a cor principal escura */
+body.light-mode h1,
+body.light-mode h2,
+body.light-mode h3 {
+    color: var(--cor-primaria-escura);
+}
+
+/* Links no claro */
+body.light-mode a {
+    color: var(--cor-primaria-escura);
+}
+
+/* Botões no claro */
+body.light-mode button {
+    background-color: var(--cor-primaria);
+    color: #fff;
+}
+
+body.light-mode button:hover {
+    background-color: var(--cor-primaria-escura);
+}
+
+/* Switch no tema claro */
+body.light-mode .switch-label {
+    background-color: var(--componente-switch-fundo-claro);
+    border-color: var(--componente-switch-borda-clara);
+    border-style: solid;
+    border-width: 1px;
+}
+
 
 /* -------------------------------------------------------------
    BREAKPOINT 1: Desktop Pequeno/Tablet Paisagem (max-width: 1200px)
